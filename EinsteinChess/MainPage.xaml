@@ -9,18 +9,25 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <GridView ItemsSource="{x:Bind Cells}" Width="800" Height="800" HorizontalAlignment="Left" VerticalAlignment="Top">
+        <GridView ItemsSource="{x:Bind Cells, Mode=TwoWay}" Width="800" Height="800" HorizontalAlignment="Left" VerticalAlignment="Top">
             <GridView.ItemTemplate>
                 <DataTemplate x:DataType="local:Cell">
                     <Grid>
-                        <Rectangle Width="150" Height="150" Fill="{x:Bind FillColor}"/>
-                        <TextBlock Text="{x:Bind ChessManNo}"  FontSize="30" Visibility="{x:Bind IsChessMan}" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                        <Rectangle Width="150" Height="150" Fill="{x:Bind FillColor,Mode=TwoWay}"/>
+                        <TextBlock Text="{x:Bind ChessManNo}"  FontSize="30" Visibility="{x:Bind IsVisibility}" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                        <!--<TextBlock Text="{x:Bind ChessManNo}"  FontSize="26" Visibility="{x:Bind IsChessMan}" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>-->
                     </Grid>
                 </DataTemplate>
             </GridView.ItemTemplate>
         </GridView>
         <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top" Height="800" >
-            
+            <TextBlock HorizontalAlignment="Left" Text="Einstein Chess" FontSize="36"/>
+            <TextBlock Text="nothing"/>
+            <StackPanel x:Name="inputPanel" Orientation="Horizontal" Margin="0,20,0,20">
+                <TextBox x:Name="nameInput" Width="300" HorizontalAlignment="Left"/>
+                <Button x:Name="inputButton" Content="Input"/>
+            </StackPanel>
+            <TextBlock x:Name="StateOutput"/>
         </StackPanel>
     </Grid>
 </Page>
